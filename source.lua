@@ -1,4 +1,4 @@
-local vector, ffi = require "vector", require "ffi" -- base libraries 
+local vector, ffi = require "vector" or vec3_t, require "ffi" -- base libraries 
 local trace = require "gamesense/trace" -- external library
 
 local fgv_to_iv = function(v) return vector(v.x, v.y, v.z) end -- foreign vector to internal vector 
