@@ -14,7 +14,7 @@ local damage = sim_result:get_damage(threat, 1.00) -- from_player, multipoint_sc
 -- a cool damage based freestanding
 local freestanding = {} do 
    function freestanding:process() 
-      local values = {
+      local data = {
          [-90] = simulation:sim_angle(-90, 0):get_dmg(),
          [0] = simulation:sim_angle(0, 0):get_dmg(),
          [90] = simulation:sim_angle(90, 0):get_dmg()
@@ -22,7 +22,7 @@ local freestanding = {} do
 
       local result = { best_dmg = 9999, best_angle = 0 }
 
-      for angle, damage in pairs(values) do 
+      for angle, damage in pairs(data) do 
           if result.best_dmg < damage then 
               result = { best_dmg = damage, best_angle = angle }
           end
