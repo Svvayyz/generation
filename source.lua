@@ -115,8 +115,8 @@ end
 local simulation_ctx_t = {} do 
     local simulation_result_t = {} do
         local get_damage_internal = function(ctx, from_player, multipoint_scale)
-            if not from_player then error("'get_damage_internal' invalid player") end 
-            if not multipoint_scale then error("'get_damage_internal' invalid multipoint scale") end -- no multipoints, fuck em 
+            if not from_player then error "'get_damage_internal' invalid player" end 
+            if not multipoint_scale then error "'get_damage_internal' invalid multipoint scale" end -- no multipoints, fuck em 
 
             local from_player_eye = from_player:get_eye_position()
             local studio_hitbox = ctx.player:get_studio_hitbox(ctx.hitbox)
@@ -155,8 +155,8 @@ local simulation_ctx_t = {} do
     end 
 
     local simulate_angle_internal = function(ctx, angle, hitbox)
-        if not angle then error("'simulate_angle_internal' invalid angle") end 
-        if not hitbox then error("'simulate_angle_internal' invalid hitbox") end 
+        if not angle then error "'simulate_angle_internal' invalid angle" end 
+        if not hitbox then error "'simulate_angle_internal' invalid hitbox" end 
 
         local hitbox_pos = ctx.player:hitbox_position(hitbox)
         local origin = ctx.player:get_origin()
