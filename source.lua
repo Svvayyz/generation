@@ -96,10 +96,8 @@ local custom_player_t = {} do
         return ffi.cast("studio_box_t*", (ffi.cast("unsigned char*", hitbox_set) + hitbox_set.hitbox_index) + hitbox_index)[0]
     end 
 
-    function custom_player_t:create(index) 
-        local new_player_t = {}
-
-        new_player_t.index = index 
+    function custom_player_t.create(index) 
+        local new_player_t = { index = index }
 
         new_player_t.get_origin = get_origin_internal
         new_player_t.hitbox_position = hitbox_position_internal
@@ -142,7 +140,7 @@ local simulation_ctx_t = {} do
             return damage 
         end     
         
-        function simulation_result_t:create(player, hitbox, position)
+        function simulation_result_t.create(player, hitbox, position)
             local new_simulation_result = {}
 
             new_simulation_result.player = player 
@@ -174,10 +172,8 @@ local simulation_ctx_t = {} do
     end 
 
     function simulation_ctx_t:create(player)
-        local new_simulation_ctx = {}
-
-        new_simulation_ctx.player = player
-
+        local new_simulation_ctx = { player = player }
+        
         new_simulation_ctx.simulate_angle = simulate_angle_internal
         new_simulation_ctx.sim_angle = simulate_angle_internal
 
@@ -187,10 +183,10 @@ end
 
 -- an example on how to use it
 
-local localplayer = custom_player_t:create(entity.get_local_player()) 
-local threat = custom_player_t:create(client.current_threat())
+local localplayer = custom_player_t.create(entity.get_local_player()) 
+local threat = custom_player_t.create(client.current_threat())
 
-local simulation = simulation_ctx_t:create(localplayer)
+local simulation = simulation_ctx_t.create(localplayer)
 
 local sim_result = simulation:simulate_angle(0, 0) -- angle, hitbox (index)
 local damage = sim_result:get_damage(threat, 1.00) -- from_player, multipoint_scale
