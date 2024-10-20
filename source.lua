@@ -2,6 +2,7 @@ local vector, ffi = require "vector" or vec3_t, require "ffi" -- base libraries
 local trace = require "gamesense/trace" -- external library
 
 local fgv_to_iv = function(v) return vector(v.x, v.y, v.z) end -- foreign vector to internal vector 
+local trace_bullet_vector = function(from_player, from, to, skip) return client.trace_bullet(from_player, from.x, from.y, from.z, to.x, to.y, to.z, skip) end -- skeet has hardcoded luaL_getarg so yea..... we gotta do this
 
 local custom_player_t = {} do 
     local import_get_client_networkable = vtable_bind("client.dll", "VClientEntityList003", 0, "void*(__thiscall*)(void*, int)")
@@ -135,7 +136,7 @@ local simulation_ctx_t = {} do
             if trace_result.entindex ~= ctx.player or trace_result.fraction == 1 then return 0 end -- faggots lifestyle
 
             -- from: from_player/his eye, to: bullet's end potsition, skip: from_player 
-            local _, damage = client.trace_bullet(from_player, from_player_eye, trace_result.end_pos:unpack(), from_player) 
+            local _, damage = trace_bullet_vector(from_player, from_player_eye, trace_result.end_pos, from_player) 
 
             return damage 
         end     
