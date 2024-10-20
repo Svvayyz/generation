@@ -174,8 +174,7 @@ local simulation_ctx_t = {} do
     function simulation_ctx_t:create(player)
         local new_simulation_ctx = { player = player }
         
-        new_simulation_ctx.simulate_angle = simulate_angle_internal
-        new_simulation_ctx.sim_angle = simulate_angle_internal
+        new_simulation_ctx.simulate_angle, new_simulation_ctx.sim_angle = simulate_angle_internal, simulate_angle_internal
 
         return new_simulation_ctx
     end 
