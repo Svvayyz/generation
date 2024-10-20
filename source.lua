@@ -160,7 +160,7 @@ local simulation_ctx_t = {} do
 
         origin.z = hitbox_pos.z 
 
-        local angles = vector():init_from_angles(0, angle, 0) * radius
+        local angles = vector():init_from_angles(0, angle, 0) * radius -- if anyone would like to simulate pitch/roll the arguments are basically pitch, yaw, roll
         local position = origin + angles
 
         return simulation_result_t.create(ctx.player, hitbox, position) 
