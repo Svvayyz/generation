@@ -121,7 +121,7 @@ local simulation_ctx_t = {} do
             local from_player_eye = from_player:get_eye_position()
             local studio_hitbox = ctx.player:get_studio_hitbox(ctx.hitbox)
 
-            if not studio_hitbox then error("'get_damage_internal' failed to get studio hitbox " .. ctx.hitbox) end 
+            if not studio_hitbox then error "'get_damage_internal' failed to get studio hitbox " .. ctx.hitbox end 
 
             local mins = fgv_to_iv(studio_hitbox.mins) * multipoint_scale
             local maxs = fgv_to_iv(studio_hitbox.maxs) * multipoint_scale
