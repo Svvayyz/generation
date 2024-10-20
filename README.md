@@ -33,9 +33,7 @@ local freestanding = {} do
             [90] = simulation:sim_angle(90, hitbox):get_dmg(threat, multipoint_scale)
         }
 
-        return sort(data, 9999, function(best_damage, damage)
-            return damage < best_damage
-        end)
+        return sort(data, 9999, function(best_damage, damage) return damage < best_damage end)
     end
 end 
 
