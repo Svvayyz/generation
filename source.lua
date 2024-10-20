@@ -2,7 +2,8 @@ local vector, ffi = require "vector" or vec3_t, require "ffi" -- base libraries
 local trace = require "gamesense/trace" -- external library
 
 local fgv_to_iv = function(v) return vector(v.x, v.y, v.z) end -- foreign vector to internal vector 
-local trace_bullet_vector = function(from_player, from, to, skip) return client.trace_bullet(from_player, from.x, from.y, from.z, to.x, to.y, to.z, skip) end -- skeet has hardcoded luaL_getarg so yea..... we gotta do this
+local trace_bullet_vector = function(from_player, from, to, skip) return client.trace_bullet(from_player, from.x, from.y, from.z, to.x, to.y, to.z, skip) end 
+-- skeet has hardcoded getting arguments (luaL_getarg) so yea..... we gotta do this
 
 local custom_player_t = {} do 
     local import_get_client_networkable = vtable_bind("client.dll", "VClientEntityList003", 0, "void*(__thiscall*)(void*, int)")
