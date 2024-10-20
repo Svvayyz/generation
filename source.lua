@@ -141,14 +141,9 @@ local simulation_ctx_t = {} do
         end     
         
         function simulation_result_t.create(player, hitbox, position)
-            local new_simulation_result = {}
+            local new_simulation_result = { player = player, hitbox = hitbox, position = position }
 
-            new_simulation_result.player = player 
-            new_simulation_result.hitbox = hitbox
-            new_simulation_result.position = position
-
-            new_simulation_result.get_dmg = get_damage_internal
-            new_simulation_result.get_damage = get_damage_internal
+            new_simulation_result.get_damage, new_simulation_result.get_dmg = get_damage_internal, get_damage_internal
 
             return new_simulation_result
         end 
@@ -168,10 +163,10 @@ local simulation_ctx_t = {} do
         local angles = vector():init_from_angles(0, angle, 0) * radius
         local position = origin + angles
 
-        return simulation_result_t:create(ctx.player, hitbox, position) 
+        return simulation_result_t.create(ctx.player, hitbox, position) 
     end 
 
-    function simulation_ctx_t:create(player)
+    function simulation_ctx_t.create(player)
         local new_simulation_ctx = { player = player }
         
         new_simulation_ctx.simulate_angle, new_simulation_ctx.sim_angle = simulate_angle_internal, simulate_angle_internal
