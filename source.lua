@@ -68,7 +68,7 @@ local custom_player_t = {} do
 
     local get_origin_internal = function(ctx) return vector(entity.get_origin(ctx.index)) end 
     local hitbox_position_internal = function(ctx, hitbox_index) return vector(entity.hitbox_position(ctx.index, hitbox_index)) end 
-    local get_eye_position_internal = function(ctx) return ctx.index end 
+    local get_eye_position_internal = function(ctx) return ctx:hitbox_position(1) end -- i'll make it an actual eye position later
 
     local get_studio_model_internal = function(ctx) 
         local networkable = import_get_client_networkable(ctx.index)
