@@ -1,5 +1,3 @@
-# How we usin
-
 ```lua
 local localplayer = custom_player_t.create(entity.get_local_player()) 
 local threat = custom_player_t.create(client.current_threat())
